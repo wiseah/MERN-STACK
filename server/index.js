@@ -4,12 +4,13 @@ const mongoose = require("mongoose")
 const app = express();
 const port = 8000;
 
+const config = require("./config/key.js"); 
 
 app.use(express.static(path.join(__dirname, '../client/build')));
 
 app.listen(port, () => {
   mongoose.connect(
-    "mongodb+srv://hyunah2765:h27652765@mern-stack-study-cluste.49uhp.mongodb.net/?retryWrites=true&w=majority&appName=mern-stack-study-cluste"
+    config.mongoURI
   ).then(()=> {
     console.log(`Example app listening at http://localhost:${port}`);
     console.log("Connecting MongoDB...")
